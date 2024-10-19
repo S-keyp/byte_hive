@@ -1,0 +1,41 @@
+$white: #f9fafd;
+$purple: #5B3BD8;
+$yellow: #FEEA4D;
+$black: #444444;
+
+@font-face {
+    font-family: 'LTWave-Light';
+    src: url("~/assets/fonts/LTWave-Light.otf");
+}
+@font-face {
+    font-family: 'LTWave-Regular';
+    src: url("~/assets/fonts/LTWave-Regular.otf");
+}
+@font-face {
+    font-family: 'LTWave-Black';
+    src: url("~/assets/fonts/LTWave-Black.otf");
+}
+@font-face {
+    font-family: 'Gontserrat-Light';
+    src: url("~/assets/fonts/Gontserrat-Light.ttf");
+}
+@font-face {
+    font-family: 'Gontserrat-Regular';
+    src: url("~/assets/fonts/Gontserrat-Regular.ttf");
+}
+@font-face {
+    font-family: 'Gontserrat-Bold';
+    src: url("~/assets/fonts/Gontserrat-Bold.ttf");
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $white;
+    font-family: "Gontserrat-Regular", sans-serif;
+}
