@@ -38,4 +38,6 @@ $black: #444444;
 body {
     background-color: $white;
     font-family: "Gontserrat-Regular", sans-serif;
+    width: 100%;
+    overflow-x: hidden;
 }

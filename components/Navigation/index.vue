@@ -1,9 +1,10 @@
 <template>
    <nav>
        <ul>
-           <li><nuxt-link to="/">Accueil</nuxt-link></li>
-           <li><nuxt-link to="/about">A propos</nuxt-link></li>
-           <li><nuxt-link to="/contact">Contact</nuxt-link></li>
+           <li><NuxtLink to="/">Accueil</NuxtLink></li>
+           <li><NuxtLink to="/about">A propos</NuxtLink></li>
+           <li><NuxtLink to="/contact">Contact</NuxtLink></li>
+           <li><NuxtLink to="/use-cases">Cas pratiques</NuxtLink></li>
        </ul>
     </nav>
 </template>
