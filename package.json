@@ -10,13 +10,13 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxtjs/style-resources": "^1.2.2",
     "nuxt": "^3.13.0",
     "vue": "latest",
     "vue-router": "latest"
   },
   "devDependencies": {
     "sass": "^1.80.3",
-    "typescript": "^5.6.3",
-    "vue-tsc": "^2.1.6"
+    "typescript": "^5.6.3"
   }
 }
