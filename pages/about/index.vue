@@ -1,4 +1,5 @@
 <template>
+  <BackgroundCanvas title="A propos" />
   <h1>A propos</h1>
  </template>
  

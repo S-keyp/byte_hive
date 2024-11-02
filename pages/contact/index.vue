@@ -1,5 +1,6 @@
 <template>
-   <h1>Contact</h1>
+  <BackgroundCanvas title="Contact" />
+  <h1>Contact</h1>
  </template>
  
  <script>
