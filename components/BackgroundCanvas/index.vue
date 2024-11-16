@@ -21,9 +21,15 @@ onMounted(() => {
 
 
 
-
-
-
+  // const image = new Image();
+  // image.src = "/logo.png";
+  // image.onload = () => {
+  //   ctx.drawImage(image, 0, 0, 50, 50);
+  //   textCoordinates = ctx.getImageData(0, 0, 300, 100)
+  //   console.log('textCoordinates', textCoordinates);
+  //   init()
+  //   const animation = new Animation(canvasRef.value, particleArray, updateParticle, drawParticle)
+  // }
   
 
   // Adjust the position of the text
@@ -63,7 +69,7 @@ onMounted(() => {
   
   /** @param {Particle} particle */
   const updateParticle = (particle, movementInfos) => {
-    if (movementInfos.distance < movementInfos.radius) {
+    if (movementInfos.distance <= movementInfos.radius - 10) {
 
       particle.size = 4
       if(movementInfos.isClicked){
