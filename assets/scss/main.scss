@@ -30,6 +30,13 @@
     src: url("~/assets/fonts/Gontserrat-Bold.ttf");
 }
 
+:root {
+    --white: #f9fafd;
+    --purple: #5B3BD8;
+    --yellow: #FEEA4D;
+    --black: #444444;
+}
+
 
 * {
     margin: 0;
@@ -56,11 +63,12 @@ body {
     }
 }
 
-.page-enter-active, 
+.page-enter-active,
 .page-enter-leave {
     transition: all 0.5s;
 }
-.page-enter-from, 
+
+.page-enter-from,
 .page-leave-to {
     backdrop-filter: blur(10px);
 }

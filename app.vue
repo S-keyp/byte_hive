@@ -3,6 +3,7 @@
     <NuxtRouteAnnouncer />
     <Navigation />
     <NuxtPage />
+    <Footer />
   </div>
 </template>
 

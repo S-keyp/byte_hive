@@ -1,14 +1,14 @@
 <template>
-    <header>
-        <nav>
+    <footer>
+        <Container>
             <ul>
                 <li><NuxtLink to="/">Accueil</NuxtLink></li>
                 <li><NuxtLink to="/about">A propos</NuxtLink></li>
                 <li><NuxtLink to="/contact">Contact</NuxtLink></li>
                 <li><NuxtLink to="/use-cases">Cas pratiques</NuxtLink></li>
             </ul>
-         </nav>
-    </header>
+         </Container>
+    </footer>
 </template>
 
 <script>

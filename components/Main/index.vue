@@ -1,9 +1,7 @@
 <template>
-   <div class="container">
-        <div>
-          <slot></slot>
-        </div>
-   </div>
+  <main role="main">
+    <slot></slot>
+  </main>
  </template>
  
  <script>

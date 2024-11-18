@@ -69,7 +69,7 @@ onMounted(() => {
   
   /** @param {Particle} particle */
   const updateParticle = (particle, movementInfos) => {
-    if (movementInfos.distance <= movementInfos.radius - 10) {
+    if (movementInfos.distance <= movementInfos.radius - 1) {
 
       particle.size = 4
       if(movementInfos.isClicked){
