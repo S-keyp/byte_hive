@@ -1,3 +1,46 @@
-li {
+.navbar {
+    background-color: #333;
+    padding: 12px 48px;
+    color: #f9fafd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.company-logo-full {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .company-logo {
+    height: 80px;
+}
+
+.navbar .company-logo-letters {
+    height: 40px;
+    margin-left: 12px;
+}
+
+.navbar .navbar-items a {
+    padding: 24px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.navbar .navbar-items a:hover::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    display: block;
+    z-index: -1;
+    background-color: #f9fafd;
+    border: 1px solid white;
+}
+
+.navbar-item {
     display: inline-block;
+    font-size: 20px;
 }

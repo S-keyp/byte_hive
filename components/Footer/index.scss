@@ -1,5 +1,10 @@
 li {
     display: inline-block;
+}
+
+footer > ::v-deep(.container) {
+    width: 100%;
     min-height: 240px;
+    padding: 0;
     background-color: var(--black);
 }

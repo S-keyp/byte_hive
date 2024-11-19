@@ -37,7 +37,7 @@ onMounted(() => {
   const adjustY = 0
 
   canvas.width = window.innerWidth
-  canvas.height = window.innerHeight
+  canvas.height = .7 * window.innerHeight
 
   ctx.scale(1, 1)
   ctx.fillStyle = 'white'
