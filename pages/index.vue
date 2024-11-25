@@ -1,6 +1,6 @@
 <template>
     <Main>
-        <BackgroundCanvas title="Homepage" />
+        <BackgroundCanvas title="Accueil" />
         <h1>Homepage</h1>
 
         <Container>

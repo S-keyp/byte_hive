@@ -11,5 +11,8 @@ export default class Particle {
         this.baseX = this.x;
         this.baseY = this.y;
         this.density = (Math.random() * 40) + 5;
+        this.directionX = Math.random() * 2 - 1;
+        this.directionY = Math.random() * 2 - 1;
+        // this.hue = hue;
     }
 }

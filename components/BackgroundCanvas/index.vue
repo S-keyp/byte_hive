@@ -5,6 +5,7 @@
 <script setup>
 import Particle from '~/utils/classes/Particle';
 import Animation from '~/utils/classes/Animation';
+import StandaloneParticleAnimetion from '~/utils/classes/StandaloneParticleAnimation';
 
 const props = defineProps({
   title: String
@@ -19,8 +20,6 @@ onMounted(() => {
   /** @type { Particle[] } */
   let particleArray = []
 
-
-
   // const image = new Image();
   // image.src = "/logo.png";
   // image.onload = () => {
@@ -33,24 +32,25 @@ onMounted(() => {
   
 
   // Adjust the position of the text
-  const adjustX = 0
+  const adjustX = 20
   const adjustY = 0
 
   canvas.width = window.innerWidth
-  canvas.height = .7 * window.innerHeight
+  canvas.height = document.body.clientHeight
 
-  ctx.scale(1, 1)
+  canvas.style.marginBottom = -canvas.getBoundingClientRect().height + 450 + 'px'
+
+  // canvas.height = .7 * window.innerHeight
+
   ctx.fillStyle = 'white'
-  ctx.font = '20px Verdana'
-  ctx.fillText(props.title, 0, 16)
-
-  ctx.strokeStyle = 'white'
-  ctx.strokeRect(0, 0, 100, 100)
+  ctx.font = '30px Courier New'
+  ctx.fillText(props.title, 0, 36)
 
   const textCoordinates = ctx.getImageData(0, 0, 300, 100)
 
   const init = () => {
     particleArray = []
+
     // Scan imageData column by column and row by row
     for(let y = 0, y2 = textCoordinates.height; y < y2; y++){
       for(let x = 0, x2 = textCoordinates.width; x < x2; x++){
@@ -59,7 +59,7 @@ onMounted(() => {
         if(textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3] > 128){
           let positionX = x + adjustX
           let positionY = y + adjustY
-          particleArray.push(new Particle(positionX * 10, positionY * 10))
+          particleArray.push(new Particle(positionX * 7, positionY * 7))
         }
       }
     }
@@ -102,10 +102,12 @@ onMounted(() => {
     ctx.beginPath()
     ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
     ctx.closePath()
+    ctx.fillStyle = "#333";
     ctx.fill()
   }
   
   const animation = new Animation(canvasRef.value, particleArray, updateParticle, drawParticle)
+  const standaloneAnimation = new StandaloneParticleAnimetion(canvasRef.value, 1000)
 })
 </script>
 
