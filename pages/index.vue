@@ -1,7 +1,6 @@
 <template>
     <Main>
         <BackgroundCanvas title="Accueil" />
-        <h1>Homepage</h1>
 
         <Container>
             <h2>Byte Hive - Donnez vie à vos idées, simplement et efficacement</h2>

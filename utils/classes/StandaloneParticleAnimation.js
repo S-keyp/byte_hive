@@ -1,9 +1,9 @@
+import Animation from './abstract/Animation.js';
 import Particle from './Particle.js';
 
-export default class StandaloneParticleAnimetion {
-    timer = 0;
-    
+export default class StandaloneParticleAnimetion extends Animation{    
     constructor(canvas, amountOfPartciles){
+        super();
         /** @type {HTMLCanvasElement} */
         this.canvas = canvas;
         /** @type {CanvasRenderingContext2D} */
@@ -13,10 +13,9 @@ export default class StandaloneParticleAnimetion {
         for(let i = 0; i < amountOfPartciles; i++){
             this.particleArray.push(new Particle(Math.random() * canvas.width, Math.random() * canvas.height));
         }
-        this.animate()
     }
 
-    updateParticles(){
+    update(){
         for(let i = 0; i < this.particleArray.length; i++){
             this.particleArray[i].x += this.particleArray[i].directionX;
             this.particleArray[i].y += this.particleArray[i].directionY;
@@ -29,7 +28,8 @@ export default class StandaloneParticleAnimetion {
         }
     }
 
-    drawParticles(){
+    draw(){
+        this.connectParticles();
         for(let i = 0; i < this.particleArray.length; i++){
             this.ctx.beginPath();
             this.ctx.arc(this.particleArray[i].x, this.particleArray[i].y, this.particleArray[i].size, 0, Math.PI * 2);
@@ -55,16 +55,4 @@ export default class StandaloneParticleAnimetion {
             }
         }
     }
-
-    animate(timeStamp){
-        const lastTime = timeStamp;
-        while (this.timer < lastTime) {
-            this.timer += 1000 / 60;
-            this.updateParticles();
-        }
-        this.connectParticles();
-        this.drawParticles();
-        requestAnimationFrame(this.animate.bind(this));
-    }
-
 }

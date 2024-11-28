@@ -1,7 +1,7 @@
 import Particle from "./Particle.js";
+import Animation from "./abstract/Animation.js";
 
-export default class Animation {
-    timer = 0;
+export default class TitleAnimation extends Animation {
     isClicked = false;
 
     /**
@@ -11,6 +11,7 @@ export default class Animation {
      * @param {Function} drawParticle
      */
     constructor(canvas, particles, updateParticle, drawParticle) {
+        super();
         this.canvas = canvas;
         this.ctx = canvas.getContext("2d");
         this.ctx.fillStyle = "white";
@@ -32,28 +33,6 @@ export default class Animation {
             this.isClicked = false;
             this.mouse.radius = 100;
         });
-
-        this.animate();
-    }
-
-    /** @param {DOMHighResTimeStamp} timeStamp */
-    animate(timeStamp) {
-        const lastTime = timeStamp;
-        // this.ctx.clearRect(0, 0, canvas.width, canvas.height);
-        this.ctx.fillStyle = "rgba(249, 250, 253, 0.65)";
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-        while (this.timer < lastTime) {
-            this.timer += 1000 / 60;
-            this.updateAll((particle) => {
-                let movementInfos = this.getDistFromMouse(particle);
-                this.updateParticle(particle, movementInfos);
-            });
-        }
-
-
-        // this.connectParticles();
-        this.drawAll(this.drawParticle);
-        requestAnimationFrame(this.animate.bind(this));
     }
 
     /** @param {Particle} particle */
@@ -100,20 +79,17 @@ export default class Animation {
         }
     }
 
-    /**
-     * @param {Function} draw
-     */
-    drawAll(drawFunction) {
+    draw() {
         this.ctx.fillStyle = "white";
         for (let particle of this.particles) {
-            drawFunction(particle);
+            this.drawParticle(particle);
         }
     }
 
-    /** @param {Function} updateFunction */
-    updateAll(updateFunction) {
+    update() {
         for (let particle of this.particles) {
-            updateFunction(particle);
+            let movementInfos = this.getDistFromMouse(particle);
+            this.updateParticle(particle, movementInfos);
         }
     }
 }
