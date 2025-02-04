@@ -21,6 +21,10 @@
     margin-left: 12px;
 }
 
+.navbar-items {
+    display: none;
+}
+
 .navbar .navbar-items a {
     padding: 24px;
     transition: all 0.3s ease;
@@ -43,4 +47,15 @@
 .navbar-item {
     display: inline-block;
     font-size: 20px;
+}
+
+@media print, screen and (min-width: 1280px) {
+    .navbar-burger {
+        display: none;
+    }
+    
+    .navbar-items {
+        display: block;
+    }
+    
 }

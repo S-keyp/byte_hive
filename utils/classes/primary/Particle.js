@@ -1,4 +1,4 @@
-import * as Types from './typedefs.js';
+import * as Types from '../typedefs.js';
 
 /**
  * @type {Types.Particle}

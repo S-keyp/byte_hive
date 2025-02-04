@@ -3,10 +3,12 @@
 </template>
 
 <script setup>
-import Particle from '~/utils/classes/Particle';
+import Particle from '~/utils/classes/primary/Particle';
 import Animation from '~/utils/classes/TitleAnimation';
 import StandaloneParticleAnimetion from '~/utils/classes/StandaloneParticleAnimation';
 import AnimationManager from '~/utils/classes/AnimationManager';
+import RectangleAnimation from '~/utils/classes/RectangleAnimation';
+import Rectangle from '~/utils/classes/primary/Rectangle';
 
 const props = defineProps({
   title: String
@@ -25,6 +27,8 @@ onMounted(() => {
   const adjustX = 20
   const adjustY = 0
 
+  let longestParticleLine = []
+
   canvas.width = window.innerWidth
   canvas.height = document.body.clientHeight
   canvas.style.marginBottom = -canvas.getBoundingClientRect().height + 450 + 'px'
@@ -32,8 +36,14 @@ onMounted(() => {
   ctx.fillStyle = 'white'
   ctx.font = '30px Courier New'
   ctx.fillText(props.title, 0, 36)
+  const textMeasure = ctx.measureText(props.title)
 
-  const textCoordinates = ctx.getImageData(0, 0, 300, 100)
+  const textCoordinates = ctx.getImageData(
+    0, 
+    0, 
+    textMeasure.width, 
+    textMeasure.actualBoundingBoxAscent * 2 + textMeasure.actualBoundingBoxDescent
+  )
 
   const init = () => {
     particleArray = []
@@ -48,8 +58,15 @@ onMounted(() => {
           let positionY = y + adjustY
           particleArray.push(new Particle(positionX * 7, positionY * 7))
         }
+        if(x == textCoordinates.width - 1){
+          longestParticleLine.push(x)
+        }
       }
     }
+
+    // Get the longest line of particles
+    longestParticleLine = Math.max(...longestParticleLine)
+    console.log('longestParticleLine', longestParticleLine);
   }
   
   
@@ -97,10 +114,19 @@ onMounted(() => {
     const animationManager = new AnimationManager(
       canvasRef.value,
       [
+        new RectangleAnimation(
+          canvasRef.value, 
+          [
+            new Rectangle(200, -200, 300, 120, "#5B3BD8"), 
+            new Rectangle(500, -350, 300, 120, "#FFDA05"),
+            new Rectangle(800, -500, 300, 120, "#0D8060")
+          ]
+        ),
         new Animation(canvasRef.value, particleArray, updateParticle, drawParticle),
-        new StandaloneParticleAnimetion(canvasRef.value, 700)
+        new StandaloneParticleAnimetion(canvasRef.value, 300)
       ]
     )
+    animationManager.animate()
   } else {
     const animationManager = new AnimationManager(
       canvasRef.value,
@@ -108,6 +134,7 @@ onMounted(() => {
         new StandaloneParticleAnimetion(canvasRef.value, 300)
       ]
     )
+    animationManager.animate()
   }
 })
 </script>

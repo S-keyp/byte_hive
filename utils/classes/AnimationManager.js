@@ -15,7 +15,6 @@ export default class AnimationManager {
         }
         this.canvas = canvas;
         this.ctx = canvas.getContext("2d");
-        this.animate()
     }
 
     draw(){
@@ -36,6 +35,7 @@ export default class AnimationManager {
             this.timer += 1000 / 60;
             this.update();
         }
+
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.draw();
         requestAnimationFrame(this.animate.bind(this));

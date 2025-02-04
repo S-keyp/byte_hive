@@ -1,4 +1,4 @@
-import Particle from "./Particle.js";
+import Particle from "./primary/Particle.js";
 import Animation from "./abstract/Animation.js";
 
 export default class TitleAnimation extends Animation {
