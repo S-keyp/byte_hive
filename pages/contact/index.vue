@@ -3,7 +3,7 @@
   <h1>Contact</h1>
  </template>
  
- <script>
+ <script setup lang="ts">
  
  </script>
  

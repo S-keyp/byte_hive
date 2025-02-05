@@ -1,33 +1,28 @@
 <template>
-   <canvas ref="canvasRef" id="canvas" @click="show"></canvas>
+   <canvas ref="canvas" id="canvas"></canvas>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import Particle from '~/utils/classes/primary/Particle';
-import Animation from '~/utils/classes/TitleAnimation';
-import StandaloneParticleAnimetion from '~/utils/classes/StandaloneParticleAnimation';
+import type { MovementInfos } from '~/utils/classes/TitleAnimation';
+import Rectangle from '~/utils/classes/primary/Rectangle';
 import AnimationManager from '~/utils/classes/AnimationManager';
 import RectangleAnimation from '~/utils/classes/RectangleAnimation';
-import Rectangle from '~/utils/classes/primary/Rectangle';
+import TitleAnimation from '~/utils/classes/TitleAnimation';
+import StandaloneParticleAnimetion from '~/utils/classes/StandaloneParticleAnimation';
 
-const props = defineProps({
-  title: String
-})
+const props = defineProps<{title: string}>()
 
-/** @type {Ref<HTMLCanvasElement>} */
-const canvasRef = ref(null)
+const canvasRef: Ref<HTMLCanvasElement | null> = useTemplateRef('canvas')
   
 onMounted(() => {
-  /** @type { CanvasRenderingContext2D } */
-  const ctx = canvasRef.value.getContext('2d')
-  /** @type { Particle[] } */
-  let particleArray = []
+  const canvas = canvasRef.value!
+  const ctx = canvas.getContext('2d')!
+  let particles: Particle[] = []
 
   // Adjust the position of the text
   const adjustX = 20
   const adjustY = 0
-
-  let longestParticleLine = []
 
   canvas.width = window.innerWidth
   canvas.height = document.body.clientHeight
@@ -46,7 +41,7 @@ onMounted(() => {
   )
 
   const init = () => {
-    particleArray = []
+    particles = []
 
     // Scan imageData column by column and row by row
     for(let y = 0, y2 = textCoordinates.height; y < y2; y++){
@@ -56,22 +51,15 @@ onMounted(() => {
         if(textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3] > 128){
           let positionX = x + adjustX
           let positionY = y + adjustY
-          particleArray.push(new Particle(positionX * 7, positionY * 7))
-        }
-        if(x == textCoordinates.width - 1){
-          longestParticleLine.push(x)
+          particles.push(new Particle(positionX * 7, positionY * 7))
         }
       }
     }
-
-    // Get the longest line of particles
-    longestParticleLine = Math.max(...longestParticleLine)
-    console.log('longestParticleLine', longestParticleLine);
   }
   
   
   /** @param {Particle} particle */
-  const updateParticle = (particle, movementInfos) => {
+  const updateParticle = (particle: Particle, movementInfos: MovementInfos) => {
     if (movementInfos.distance <= movementInfos.radius - 1) {
       particle.size = 4
       
@@ -101,7 +89,7 @@ onMounted(() => {
   /**
    * @param {Particle} particle
    */
-  const drawParticle = (particle) => {
+  const drawParticle = (particle: Particle) => {
     ctx.beginPath()
     ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
     ctx.closePath()
@@ -112,29 +100,29 @@ onMounted(() => {
   if (window.innerWidth > 1280){
     init()
     const animationManager = new AnimationManager(
-      canvasRef.value,
+      canvas,
       [
         new RectangleAnimation(
-          canvasRef.value, 
+          canvas, 
           [
             new Rectangle(200, -200, 300, 120, "#5B3BD8"), 
             new Rectangle(500, -350, 300, 120, "#FFDA05"),
             new Rectangle(800, -500, 300, 120, "#0D8060")
           ]
         ),
-        new Animation(canvasRef.value, particleArray, updateParticle, drawParticle),
-        new StandaloneParticleAnimetion(canvasRef.value, 300)
+        new TitleAnimation(canvas, particles, updateParticle, drawParticle),
+        new StandaloneParticleAnimetion(canvas, 300)
       ]
     )
-    animationManager.animate()
+    animationManager.animate(0)
   } else {
     const animationManager = new AnimationManager(
-      canvasRef.value,
+      canvas,
       [
-        new StandaloneParticleAnimetion(canvasRef.value, 300)
+        new StandaloneParticleAnimetion(canvas, 300)
       ]
     )
-    animationManager.animate()
+    animationManager.animate(0)
   }
 })
 </script>

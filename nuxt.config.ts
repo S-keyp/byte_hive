@@ -24,10 +24,12 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          api:"modern-compiler",
+          api: "modern-compiler",
         },
       },
     },
   },
-
+  typescript: {
+    typeCheck: true,
+  },
 })
