@@ -22,7 +22,7 @@
     </header>
 </template>
 
-<script>
+<script type="ts">
 </script>
 
 <style scoped lang="scss">
