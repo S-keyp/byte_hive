@@ -3,7 +3,7 @@
   <h1>A propos</h1>
  </template>
  
- <script>
+ <script lang="ts">
  
  </script>
  

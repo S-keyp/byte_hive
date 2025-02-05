@@ -65,12 +65,12 @@
     </Main>
 </template>
 
-<script setup>
+<script setup lang="ts">
 useSeoMeta({
     title: 'Home',
     description: 'This is the home page',
     keywords: 'home, page, vue, nuxt',
-    image: 'https://example.com/image.jpg',
-    url: 'https://example.com'
+    ogImage: 'https://example.com/image.jpg',
+    ogUrl: 'https://example.com'
 })
 </script>
