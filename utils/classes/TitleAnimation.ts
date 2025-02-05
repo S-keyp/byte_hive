@@ -1,30 +1,35 @@
-import Particle from "./primary/Particle.js";
-import Animation from "./abstract/Animation.js";
+import Particle from "./primary/Particle";
+import Animation from "./abstract/Animation";
+
+export interface MovementInfos { distance: number; directionX: number; directionY: number; radius: number; isClicked: boolean; }
+export type ParticleUpdateFunction = (particle: Particle, movementInfos: MovementInfos) => void
+export type ParticleDrawFunction = (particle: Particle) => void
+export interface MouseInfos {
+    x: number
+    y: number
+    radius: number
+}
 
 export default class TitleAnimation extends Animation {
     isClicked = false;
 
-    /**
-     * @param {HTMLCanvasElement} canvas
-     * @param {Particle[]} particles
-     * @param {Function} updateParticle
-     * @param {Function} drawParticle
-     */
-    constructor(canvas, particles, updateParticle, drawParticle) {
-        super();
-        this.canvas = canvas;
-        this.ctx = canvas.getContext("2d");
+    particles: Particle[]
+    updateParticle: ParticleUpdateFunction
+    drawParticle: ParticleDrawFunction
+    mouse: MouseInfos
+
+    constructor(canvas: HTMLCanvasElement, particles: Particle[], updateParticle: ParticleUpdateFunction, drawParticle: ParticleDrawFunction) {
+        super(canvas);
         this.ctx.fillStyle = "white";
         this.particles = particles;
         this.updateParticle = updateParticle;
         this.drawParticle = drawParticle;
-        this.mouse = { x: null, y: null, radius: 100 };
+        this.mouse = { x: 0, y: 0, radius: 100 };
 
         this.canvas.addEventListener("mousemove", (event) => {
             this.mouse.x = event.x;
             this.mouse.y = event.y - this.canvas.getBoundingClientRect().top;
         });
-
         this.canvas.addEventListener("mousedown", () => {
             this.isClicked = true;
             this.mouse.radius = 300;
@@ -35,8 +40,7 @@ export default class TitleAnimation extends Animation {
         });
     }
 
-    /** @param {Particle} particle */
-    getDistFromMouse(particle) {
+    getDistFromMouse(particle: Particle) {
         let dx = this.mouse.x - particle.x;
         let dy = this.mouse.y - particle.y;
         let distance = Math.sqrt(dx * dx + dy * dy);
