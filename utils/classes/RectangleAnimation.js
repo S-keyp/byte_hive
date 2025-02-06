@@ -26,6 +26,7 @@ export default class RectangleAnimation extends Animation {
     }
 
     draw() {
+        this.ctx.save()
         this.ctx.setTransform(1, Math.tan(45), 0, 1, 0, 0);
 
         for (let rectangle of this.rectangles) {
@@ -39,6 +40,7 @@ export default class RectangleAnimation extends Animation {
                 rectangle.height,
             );
         }
-        this.ctx.resetTransform();
+
+        this.ctx.restore();
     }
 }

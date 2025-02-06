@@ -10,14 +10,11 @@ export default class TitleAnimation extends Animation {
      * @param {Function} updateParticle
      * @param {Function} drawParticle
      */
-    constructor(canvas, particles, updateParticle, drawParticle) {
+    constructor(canvas, particles) {
         super();
         this.canvas = canvas;
         this.ctx = canvas.getContext("2d");
-        this.ctx.fillStyle = "white";
         this.particles = particles;
-        this.updateParticle = updateParticle;
-        this.drawParticle = drawParticle;
         this.mouse = { x: null, y: null, radius: 100 };
 
         this.canvas.addEventListener("mousemove", (event) => {
@@ -35,17 +32,55 @@ export default class TitleAnimation extends Animation {
         });
     }
 
+    connectParticles() {
+        this.ctx.save()
+        this.ctx.lineWidth = 1;
+        this.ctx.strokeStyle = "rgba(68, 68, 68, .3)";
+        this.ctx.beginPath();
+
+        for (let i = 0; i < this.particles.length; i++) {
+            for (let j = i; j < this.particles.length; j++) {
+                let dx = this.particles[i].x - this.particles[j].x;
+                let dy = this.particles[i].y - this.particles[j].y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < 15 && distance > 7) {
+                    this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
+                    this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
+                }
+            }
+        }
+
+        this.ctx.stroke();
+        this.ctx.restore()
+    }
+  
+    draw() {
+        this.connectParticles()
+        
+        const oldColor = this.ctx.fillStyle
+        this.ctx.beginPath()
+        for (let particle of this.particles) {
+            this.ctx.moveTo(particle.x, particle.y)
+            this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
+        }
+
+        this.ctx.fillStyle = "#333";
+        this.ctx.fill() 
+        this.ctx.fillStyle = oldColor;
+    }
+
     /** @param {Particle} particle */
     getDistFromMouse(particle) {
-        let dx = this.mouse.x - particle.x;
-        let dy = this.mouse.y - particle.y;
-        let distance = Math.sqrt(dx * dx + dy * dy);
-        let maxDistance = this.mouse.radius;
-        let forceDirectionX = dx / distance;
-        let forceDirectionY = dy / distance;
-        let force = (maxDistance - distance) / maxDistance;
-        let directionX = forceDirectionX * force * particle.density;
-        let directionY = forceDirectionY * force * particle.density;
+        const dx = this.mouse.x - particle.x;
+        const dy = this.mouse.y - particle.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const maxDistance = this.mouse.radius;
+        const forceDirectionX = dx / distance;
+        const forceDirectionY = dy / distance;
+        const force = (maxDistance - distance) / maxDistance;
+        const directionX = forceDirectionX * force * particle.density;
+        const directionY = forceDirectionY * force * particle.density;
 
         return {
             distance,
@@ -56,40 +91,36 @@ export default class TitleAnimation extends Animation {
         };
     }
 
-    connectParticles() {
-        let opacityValue = 1;
-        for (let i = 0; i < this.particles.length; i++) {
-            for (let j = i; j < this.particles.length; j++) {
-                let dx = this.particles[i].x - this.particles[j].x;
-                let dy = this.particles[i].y - this.particles[j].y;
-                let distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < 20 && distance > 7) {
-                    opacityValue = 1 - (distance / 20);
-                    this.ctx.beginPath();
-                    // this.ctx.strokeStyle = "black"
-                    this.ctx.strokeStyle = "rgba(68, 68, 68, " + opacityValue +
-                        ")";
-                    this.ctx.lineWidth = 1;
-                    this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
-                    this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
-                    this.ctx.stroke();
-                }
-            }
-        }
-    }
-
-    draw() {
-        this.ctx.fillStyle = "white";
-        for (let particle of this.particles) {
-            this.drawParticle(particle);
-        }
-    }
 
     update() {
+        let lut = [[-1, 1], [-1, 1]]
         for (let particle of this.particles) {
             let movementInfos = this.getDistFromMouse(particle);
-            this.updateParticle(particle, movementInfos);
+            if (movementInfos.distance <= movementInfos.radius) {
+                
+                particle.size = 4
+                
+                if(movementInfos.isClicked){
+                  particle.x += movementInfos.directionX / 2
+                  particle.y += movementInfos.directionY / 2
+                } else {
+                  particle.x -= movementInfos.directionX + lut[Math.round(Math.random())][Math.round(Math.random())]
+                  particle.y -= movementInfos.directionY + lut[Math.round(Math.random())][Math.round(Math.random())]
+                }
+                
+            } else {
+                particle.size = 2
+          
+                if (particle.x != particle.baseX) {
+                  let dx = particle.x - particle.baseX
+                  particle.x -= dx / 10
+                } 
+          
+                if (particle.y != particle.baseY){
+                  let dy = particle.y - particle.baseY
+                  particle.y -= dy / 10
+                }
+            }
         }
     }
 }

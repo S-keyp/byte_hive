@@ -15,6 +15,8 @@ export default class AnimationManager {
         }
         this.canvas = canvas;
         this.ctx = canvas.getContext("2d");
+        this.ctx.strokeStyle = "rgba(68, 68, 68, 0.05)";
+        this.ctx.fillStyle = "rgba(68, 68, 68, 0.05)";
     }
 
     draw(){
@@ -38,6 +40,7 @@ export default class AnimationManager {
 
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.draw();
+
         requestAnimationFrame(this.animate.bind(this));
     }
 }

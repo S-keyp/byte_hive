@@ -4,7 +4,7 @@
 
 <script setup>
 import Particle from '~/utils/classes/primary/Particle';
-import Animation from '~/utils/classes/TitleAnimation';
+import TitleAnimation from '~/utils/classes/TitleAnimation';
 import StandaloneParticleAnimetion from '~/utils/classes/StandaloneParticleAnimation';
 import AnimationManager from '~/utils/classes/AnimationManager';
 import RectangleAnimation from '~/utils/classes/RectangleAnimation';
@@ -26,90 +26,41 @@ onMounted(() => {
   // Adjust the position of the text
   const adjustX = 20
   const adjustY = 0
-
-  let longestParticleLine = []
+  const particleSpacing = 7
 
   canvas.width = window.innerWidth
   canvas.height = document.body.clientHeight
   canvas.style.marginBottom = -canvas.getBoundingClientRect().height + 450 + 'px'
 
-  ctx.fillStyle = 'white'
   ctx.font = '30px Courier New'
-  ctx.fillText(props.title, 0, 36)
+  ctx.fillText(props.title, 0, 30)
+  ctx.textBaseline = 'ideographic'
   const textMeasure = ctx.measureText(props.title)
-
   const textCoordinates = ctx.getImageData(
     0, 
     0, 
     textMeasure.width, 
-    textMeasure.actualBoundingBoxAscent * 2 + textMeasure.actualBoundingBoxDescent
+    textMeasure.fontBoundingBoxAscent 
   )
 
   const init = () => {
     particleArray = []
+	const pixels_data = textCoordinates.data;
 
-    // Scan imageData column by column and row by row
-    for(let y = 0, y2 = textCoordinates.height; y < y2; y++){
-      for(let x = 0, x2 = textCoordinates.width; x < x2; x++){
-        // Filter out pixels with opacity > 128 
-        // (opacity is the 4th value in the array because it's rgba)
-        if(textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3] > 128){
-          let positionX = x + adjustX
-          let positionY = y + adjustY
-          particleArray.push(new Particle(positionX * 7, positionY * 7))
+    for (let y = 0; y < textCoordinates.height; y++) {
+        for (let x = 0; x < textCoordinates.width; x++) {
+            const index = (y * textCoordinates.width + x) * 4;
+            const a = pixels_data[index + 3];
+            if (a > 0) {
+                let positionX = x + adjustX
+				let positionY = y + adjustY
+				particleArray.push(new Particle(positionX * particleSpacing, positionY * particleSpacing))
+            }
         }
-        if(x == textCoordinates.width - 1){
-          longestParticleLine.push(x)
-        }
-      }
-    }
-
-    // Get the longest line of particles
-    longestParticleLine = Math.max(...longestParticleLine)
-    console.log('longestParticleLine', longestParticleLine);
-  }
-  
-  
-  /** @param {Particle} particle */
-  const updateParticle = (particle, movementInfos) => {
-    if (movementInfos.distance <= movementInfos.radius - 1) {
-      particle.size = 4
-      
-      if(movementInfos.isClicked){
-        particle.x += movementInfos.directionX / 2
-        particle.y += movementInfos.directionY / 2
-      } else {
-        particle.x -= movementInfos.directionX
-        particle.y -= movementInfos.directionY
-      }
-      
-    } else {
-      particle.size = 2
-
-      if (particle.x != particle.baseX) {
-        let dx = particle.x - particle.baseX
-        particle.x -= dx / 10
-      } 
-
-      if (particle.y != particle.baseY){
-        let dy = particle.y - particle.baseY
-        particle.y -= dy / 10
-      }
     }
   }
   
-  /**
-   * @param {Particle} particle
-   */
-  const drawParticle = (particle) => {
-    ctx.beginPath()
-    ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-    ctx.closePath()
-    ctx.fillStyle = "#333";
-    ctx.fill()
-  }
-  
-  if (window.innerWidth > 1280){
+  if (window.innerWidth > 280){
     init()
     const animationManager = new AnimationManager(
       canvasRef.value,
@@ -122,8 +73,8 @@ onMounted(() => {
             new Rectangle(800, -500, 300, 120, "#0D8060")
           ]
         ),
-        new Animation(canvasRef.value, particleArray, updateParticle, drawParticle),
-        new StandaloneParticleAnimetion(canvasRef.value, 300)
+        new StandaloneParticleAnimetion(canvasRef.value, 300),
+        new TitleAnimation(canvasRef.value, particleArray),
       ]
     )
     animationManager.animate()
