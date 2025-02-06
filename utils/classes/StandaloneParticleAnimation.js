@@ -30,7 +30,7 @@ export default class StandaloneParticleAnimetion extends Animation {
             ) {
 
 
-                        this.particleArray[i].directionX *= -1
+                    this.particleArray[i].directionX *= -1
             }
             if (
                 this.particleArray[i].y < 0 ||
