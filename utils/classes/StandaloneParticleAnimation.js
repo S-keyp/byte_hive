@@ -28,13 +28,15 @@ export default class StandaloneParticleAnimetion extends Animation {
                 this.particleArray[i].x < 0 ||
                 this.particleArray[i].x > this.canvas.width
             ) {
-                this.particleArray[i].directionX *= -1;
+
+
+                        this.particleArray[i].directionX *= -1
             }
             if (
                 this.particleArray[i].y < 0 ||
                 this.particleArray[i].y > this.canvas.height
             ) {
-                this.particleArray[i].directionY *= -1;
+                                        this.particleArray[i].directionY *= -1;
             }
         }
     }
@@ -43,7 +45,7 @@ export default class StandaloneParticleAnimetion extends Animation {
         this.connectParticles();
 
         for (let i = 0; i < this.particleArray.length; i++) {
-            this.ctx.moveTo(this.particleArray[i].x, this.particleArray[i].y)
+            this.ctx.moveTo(this.particleArray[i].x, this.particleArray[i].y);
             this.ctx.arc(
                 this.particleArray[i].x,
                 this.particleArray[i].y,
