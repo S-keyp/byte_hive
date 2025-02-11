@@ -41,9 +41,7 @@ let dropDownHeadImage = ref(null);
 onMounted(() => {
     console.log("dropDownHeadImage.value", dropDownHeadImage.value);
     /** @type { Ref<HTMLElement> } */
-    let headElement = dropDownHeadText.value
-        ? dropDownHeadText.value
-        : dropDownHeadImage.value;
+    let headElement = dropDownHeadText.value ? dropDownHeadText.value : dropDownHeadImage.value;
 
     console.log("headElement", headElement);
 });

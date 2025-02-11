@@ -1,8 +1,7 @@
 # Nuxt 3 Minimal Starter
 
-Look at the
-[Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to
-learn more.
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn
+more.
 
 ## Setup
 
@@ -18,7 +17,7 @@ Setup Husky
 ```bash
 npm run prepare
 
-printf "deno fmt --unstable-component --indent-width=4" > .husky/pre-commit
+printf "deno fmt --unstable-component --indent-width=4 --line-width=100" > .husky/pre-commit
 ```
 
 ## Development Server
@@ -46,6 +45,5 @@ Locally preview production build:
 npm run preview
 ```
 
-Check out the
-[deployment documentation](https://nuxt.com/docs/getting-started/deployment) for
-more information.
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more
+information.
