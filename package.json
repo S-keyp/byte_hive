@@ -16,6 +16,8 @@
     "vue-router": "latest"
   },
   "devDependencies": {
+    "husky": "^9.1.7",
+    "prettier": "^3.5.0",
     "sass": "^1.80.3",
     "typescript": "^5.6.3"
   }
