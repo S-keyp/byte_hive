@@ -11,6 +11,7 @@
         "prepare": "husky"
     },
     "dependencies": {
+        "@nuxt/image": "^1.9.0",
         "@nuxtjs/style-resources": "^1.2.2",
         "nuxt": "^3.13.0",
         "vue": "latest",
