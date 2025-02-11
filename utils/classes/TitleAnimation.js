@@ -15,12 +15,12 @@ export default class TitleAnimation extends Animation {
         this.canvas = canvas;
         this.ctx = canvas.getContext("2d");
         this.particles = particles;
-        this.mouse = { x: null, y: null, radius: 100 };
+                    this.mouse = { x: null, y: null, radius: 100 };
 
-        this.canvas.addEventListener("mousemove", (event) => {
-            this.mouse.x = event.x;
-            this.mouse.y = event.y - this.canvas.getBoundingClientRect().top;
-        });
+this.canvas.addEventListener("mousemove", (event) => {
+    this.mouse.x = event.x;
+    this.mouse.y = event.y - this.canvas.getBoundingClientRect().top;
+});
 
         this.canvas.addEventListener("mousedown", () => {
             this.isClicked = true;
