@@ -7,7 +7,7 @@
  * @property {number} baseX - initial x position.
  * @property {number} baseY - initial y position.
  * @property {number} density - density.
-*/
+ */
 
 /**
  * @typedef Rectangle
@@ -19,6 +19,6 @@
  * @property {number} color - particle color.
  * @property {number} baseX - initial x position.
  * @property {number} baseY - initial y position.
-*/
+ */
 
-export const Types = {}
+export const Types = {};

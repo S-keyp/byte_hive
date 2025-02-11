@@ -1,78 +1,78 @@
 @use "colors" as *;
 
 @font-face {
-    font-family: 'LTWave-Light';
-    src: url("~/assets/fonts/LTWave-Light.otf");
+  font-family: "LTWave-Light";
+  src: url("~/assets/fonts/LTWave-Light.otf");
 }
 
 @font-face {
-    font-family: 'LTWave-Regular';
-    src: url("~/assets/fonts/LTWave-Regular.otf");
+  font-family: "LTWave-Regular";
+  src: url("~/assets/fonts/LTWave-Regular.otf");
 }
 
 @font-face {
-    font-family: 'LTWave-Black';
-    src: url("~/assets/fonts/LTWave-Black.otf");
+  font-family: "LTWave-Black";
+  src: url("~/assets/fonts/LTWave-Black.otf");
 }
 
 @font-face {
-    font-family: 'Gontserrat-Light';
-    src: url("~/assets/fonts/Gontserrat-Light.ttf");
+  font-family: "Gontserrat-Light";
+  src: url("~/assets/fonts/Gontserrat-Light.ttf");
 }
 
 @font-face {
-    font-family: 'Gontserrat-Regular';
-    src: url("~/assets/fonts/Gontserrat-Regular.ttf");
+  font-family: "Gontserrat-Regular";
+  src: url("~/assets/fonts/Gontserrat-Regular.ttf");
 }
 
 @font-face {
-    font-family: 'Gontserrat-Bold';
-    src: url("~/assets/fonts/Gontserrat-Bold.ttf");
+  font-family: "Gontserrat-Bold";
+  src: url("~/assets/fonts/Gontserrat-Bold.ttf");
 }
 
 :root {
-    --white: #f9fafd;
-    --purple: #5B3BD8;
-    --yellow: #FEEA4D;
-    --black: #444444;
+  --white: #f9fafd;
+  --purple: #5b3bd8;
+  --yellow: #feea4d;
+  --black: #444444;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: $white;
-    color: #101010;
-    font-family: "Gontserrat-Regular", sans-serif;
-    width: 100%;
-    overflow-x: hidden;
+  background-color: $white;
+  color: #101010;
+  font-family: "Gontserrat-Regular", sans-serif;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 @media (prefers-color-scheme: dark) {
-    body {
-        background-color: $black;
-        color: $white;
-    }
+  body {
+    background-color: $black;
+    color: $white;
+  }
 
-    a:visited {
-        color: $yellow;
-    }
+  a:visited {
+    color: $yellow;
+  }
 }
 
 .page-enter-active,
 .page-enter-leave {
-    transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .page-enter-from,
 .page-leave-to {
-    backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }

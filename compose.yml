@@ -3,4 +3,3 @@ services:
     image: skeyp/byte-hive
     ports:
       - "3000:3000"
-      
