@@ -1,15 +1,14 @@
 <template>
-   <div class="container">
+    <div class="container">
         <div>
-          <slot></slot>
+            <slot></slot>
         </div>
-   </div>
- </template>
- 
- <script>
- 
- </script>
- 
- <style lang="scss">
- @use "./index.scss";
- </style>
+    </div>
+</template>
+
+<script>
+</script>
+
+<style lang="scss">
+@use "./index.scss";
+</style>

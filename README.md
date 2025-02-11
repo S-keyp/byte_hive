@@ -18,7 +18,7 @@ Setup Husky
 ```bash
 npm run prepare
 
-printf "deno fmt" > .husky/pre-commit
+printf "deno fmt --unstable-component --indent-width=4" > .husky/pre-commit
 ```
 
 ## Development Server

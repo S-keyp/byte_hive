@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <NuxtRouteAnnouncer />
-    <Navigation />
-    <NuxtPage />
-    <Footer />
-  </div>
+    <div>
+        <NuxtRouteAnnouncer />
+        <Navigation />
+        <NuxtPage />
+        <Footer />
+    </div>
 </template>
 
 <style lang="scss">
