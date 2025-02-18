@@ -1,1 +1,33 @@
+.dropdown {
+    position: relative;
+    background-color: inherit;
+    display: inline-block;
+}
 
+.dropdown-head-text,
+.dropdown-head-img {
+    cursor: pointer;
+}
+
+.dropdown-head-text {}
+
+.dropdown-head-img {}
+
+.dropdown-items {
+    display: none;
+    list-style: none;
+    position: absolute;
+    width: max-content;
+    right: 0;
+    background-color: inherit;
+}
+
+.dropdown-item {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 24px;
+}
+
+.dropdown--active .dropdown-items {
+    display: block;
+}

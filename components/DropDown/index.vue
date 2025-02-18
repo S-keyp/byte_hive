@@ -1,32 +1,38 @@
 <template>
     <div class="dropdown">
-        <p v-if="dropDownHead.isText" ref="dropDownHeadText">
-            {{ dropDownHead.head }}
-        </p>
         <img
-            v-else
-            :src="dropDownHead.head"
-            :alt='dropDownHead.head.replaceAll("-", " ")'
+            v-if="isImageLink"
+            class="dropdown-head-img"
+            :src="dropDownHead"
+            :alt='dropDownHead.replaceAll("-", " ")'
             ref="dropDownHeadImage"
+            @click.stop="toggleDropDown"
         />
+
+        <p
+            v-else
+            class="dropdown-head-text"
+            ref="dropDownHeadText"
+            @click="toggleDropDown"
+        >
+            {{ dropDownHead }}
+        </p>
 
         <ul class="dropdown-items" ref="dropdown">
             <li
-                class="dropdown-item"
                 v-for="elt in dropDownEntries"
                 :key="elt.url"
             >
-                <NuxtLink :to="elt.url">{{ elt.title }}</NuxtLink>
+                <NuxtLink class="dropdown-item" :to="elt.url">{{ elt.title }}</NuxtLink>
             </li>
         </ul>
     </div>
 </template>
 
 <script setup>
-let props = defineProps({
+const props = defineProps({
     dropDownHead: {
-        head: String,
-        isText: Boolean,
+        type: String,
         required: true,
     },
     dropDownEntries: {
@@ -35,16 +41,18 @@ let props = defineProps({
     },
 });
 
-let dropDownHeadText = ref(null);
-let dropDownHeadImage = ref(null);
+let text = props.dropDownHead;
+let isImageLink = (text.includes(".png") || text.includes(".jpg") ||
+        text.includes(".jpeg") || text.includes(".svg") ||
+        text.includes("/"))
+    ? true
+    : false;
 
-onMounted(() => {
-    console.log("dropDownHeadImage.value", dropDownHeadImage.value);
-    /** @type { Ref<HTMLElement> } */
-    let headElement = dropDownHeadText.value ? dropDownHeadText.value : dropDownHeadImage.value;
-
-    console.log("headElement", headElement);
-});
+function toggleDropDown(event) {
+    /** @type {HTMLElement} */
+    let target = event.target.parentElement;
+    target.classList.toggle("dropdown--active");
+}
 </script>
 
 <style lang="scss">

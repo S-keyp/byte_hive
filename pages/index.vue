@@ -2,16 +2,6 @@
     <Main>
         <BackgroundCanvas title="Accueil" />
 
-        <DropDown
-            :dropDownHead='{ head: "/full-logo-company.png", isText: false }'
-            :dropDownEntries='
-                [{ url: "/", title: "Accueil" }, { url: "/about", title: "A propos" }, {
-                    url: "/use-cases",
-                    title: "Cas pratiques",
-                }, { url: "/contact", title: "Contact" }]
-            '
-        />
-
         <Container>
             <h2>
                 Byte Hive - Donnez vie à vos idées, simplement et efficacement
