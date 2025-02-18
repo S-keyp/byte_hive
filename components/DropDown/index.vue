@@ -13,7 +13,7 @@
             v-else
             class="dropdown-head-text"
             ref="dropDownHeadText"
-            @click="toggleDropDown"
+            @click.stop="toggleDropDown"
         >
             {{ dropDownHead }}
         </p>
@@ -23,7 +23,9 @@
                 v-for="elt in dropDownEntries"
                 :key="elt.url"
             >
-                <NuxtLink class="dropdown-item" :to="elt.url">{{ elt.title }}</NuxtLink>
+                <NuxtLink class="dropdown-item" :to="elt.url" @click.stop="toggleDropDown">{{
+                    elt.title
+                }}</NuxtLink>
             </li>
         </ul>
     </div>
@@ -49,8 +51,11 @@ let isImageLink = (text.includes(".png") || text.includes(".jpg") ||
     : false;
 
 function toggleDropDown(event) {
-    /** @type {HTMLElement} */
     let target = event.target.parentElement;
+
+    if (event.target.classList.contains("dropdown-item")) {
+        target = event.target.parentElement.parentElement.parentElement;
+    }
     target.classList.toggle("dropdown--active");
 }
 </script>

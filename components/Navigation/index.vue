@@ -15,6 +15,7 @@
             </NuxtLink>
 
             <DropDown
+                class="navbar--small"
                 dropDownHead="/burger.png"
                 :dropDownEntries='
                     [
@@ -25,6 +26,19 @@
                     ]
                 '
             />
+
+            <ul class="navbar--large navbar-items">
+                <li class="navbar-item"><NuxtLink to="/">Accueil</NuxtLink></li>
+                <li class="navbar-item">
+                    <NuxtLink to="/about">A propos</NuxtLink>
+                </li>
+                <li class="navbar-item">
+                    <NuxtLink to="/use-cases">Cas pratiques</NuxtLink>
+                </li>
+                <li class="navbar-item">
+                    <NuxtLink to="/contact">Contact</NuxtLink>
+                </li>
+            </ul>
         </nav>
     </header>
 </template>
