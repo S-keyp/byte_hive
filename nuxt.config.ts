@@ -22,9 +22,9 @@ export default defineNuxtConfig({
         // pageTransition: { name: 'page', mode: 'out-in' }
     },
     // allow connection from device on same wifi
-    devServer: {
-        host: "0.0.0.0",
-    },
+    // devServer: {
+    //     host: "0.0.0.0",
+    // },
 
     vite: {
         css: {

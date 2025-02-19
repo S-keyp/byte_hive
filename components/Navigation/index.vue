@@ -20,7 +20,7 @@
                 :dropDownEntries='
                     [
                         { url: "/", title: "Accueil" },
-                        { url: "/about", title: "A propos" },
+                        { url: "/about", title: "Expertise" },
                         { url: "/use-cases", title: "Cas pratiques" },
                         { url: "/contact", title: "Contact" },
                     ]

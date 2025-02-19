@@ -71,16 +71,16 @@ onMounted(() => {
         const animationManager = new AnimationManager(
             canvasRef.value,
             [
-                new RectangleAnimation(
-                    canvasRef.value,
-                    [
-                        new Rectangle(200, -200, 300, 120, "#5B3BD8"),
-                        new Rectangle(500, -350, 300, 120, "#FFDA05"),
-                        new Rectangle(800, -500, 300, 120, "#0D8060"),
-                    ],
-                ),
-                new StandaloneParticleAnimetion(canvasRef.value, 300),
-                new TitleAnimation(canvasRef.value, particleArray),
+                // new RectangleAnimation(
+                //     canvasRef.value,
+                //     [
+                //         new Rectangle(200, -200, 300, 120, "#5B3BD8"),
+                //         new Rectangle(500, -350, 300, 120, "#FFDA05"),
+                //         new Rectangle(800, -500, 300, 120, "#0D8060"),
+                //     ],
+                // ),
+                // new StandaloneParticleAnimetion(canvasRef.value, 300),
+                // new TitleAnimation(canvasRef.value, particleArray),
             ],
         );
         animationManager.animate();
