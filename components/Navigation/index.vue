@@ -16,7 +16,7 @@
 
             <DropDown
                 class="navbar--small"
-                dropDownHead="/burger.png"
+                dropDownHead="/icons/burger.png"
                 :dropDownEntries='
                     [
                         { url: "/", title: "Accueil" },

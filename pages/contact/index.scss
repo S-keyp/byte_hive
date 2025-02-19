@@ -1,6 +1,6 @@
 .contact-form {
+    width: 90%;
     max-width: 550px;
-    margin-top: 20px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -23,6 +23,8 @@ label input {
 }
 
 .contact-form-textarea {
+    width: 100%;
+    max-width: 420px;
     margin-top: 6px;
 }
 
@@ -42,6 +44,6 @@ label input {
 
 .contact-form-button::after {
     display: inline-block;
-    content: url("/public/send-arrow.svg");
+    content: url("/public/icons/send-arrow.svg");
     margin-left: 10px;
 }
