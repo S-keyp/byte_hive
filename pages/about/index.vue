@@ -1,6 +1,6 @@
 <template>
     <BackgroundCanvas title="Notre expertise" />
-    
+
     <h1>Notre expertise</h1>
 
     <Container>
