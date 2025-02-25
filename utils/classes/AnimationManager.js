@@ -15,8 +15,7 @@ export default class AnimationManager {
         }
         this.canvas = canvas;
         this.ctx = canvas.getContext("2d");
-        this.ctx.strokeStyle = "rgba(68, 68, 68, 0.05)";
-        this.ctx.fillStyle = "rgba(68, 68, 68, 0.05)";
+
         // this.ctx.translate(this.canvas.width / 2, this.canvas.height / 2);
     }
 

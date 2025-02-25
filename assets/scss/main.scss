@@ -57,13 +57,25 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-    body {
+    body,
+    .background-canvas {
         background-color: $black;
         color: $white;
     }
 
     a:visited {
         color: $yellow;
+    }
+}
+@media (prefers-color-scheme: light) {
+    body,
+    .background-canvas {
+        background-color: var(--white);
+        color: $black;
+    }
+
+    a:visited {
+        color: $purple;
     }
 }
 

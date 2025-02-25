@@ -3,11 +3,7 @@ import Particle from "./primary/Particle.js";
 
 export default class StandaloneParticleAnimetion extends Animation {
     constructor(canvas, amountOfPartciles) {
-        super();
-        /** @type {HTMLCanvasElement} */
-        this.canvas = canvas;
-        /** @type {CanvasRenderingContext2D} */
-        this.ctx = canvas.getContext("2d");
+        super(canvas);
 
         this.particleArray = [];
         for (let i = 0; i < amountOfPartciles; i++) {
@@ -52,6 +48,8 @@ export default class StandaloneParticleAnimetion extends Animation {
                 Math.PI * 2,
             );
         }
+
+        this.ctx.fillStyle = this.defaultFill;
         this.ctx.fill();
     }
 
@@ -75,6 +73,8 @@ export default class StandaloneParticleAnimetion extends Animation {
                 }
             }
         }
+
+        this.ctx.strokeStyle = this.defaultStroke;
         this.ctx.stroke();
     }
 }

@@ -11,9 +11,10 @@ export default class TitleAnimation extends Animation {
      * @param {Function} drawParticle
      */
     constructor(canvas, particles) {
-        super();
-        this.canvas = canvas;
-        this.ctx = canvas.getContext("2d");
+        super(canvas);
+        // this.defaultFill = "rgba(249, 250, 253, 1)";
+        // this.defaultStroke = "rgba(249, 250, 253, 1)";
+
         this.particles = particles;
         this.mouse = { x: null, y: null, radius: 100 };
 
@@ -33,9 +34,8 @@ export default class TitleAnimation extends Animation {
     }
 
     connectParticles() {
-        this.ctx.save();
         this.ctx.lineWidth = 1;
-        this.ctx.strokeStyle = "rgba(68, 68, 68, .3)";
+        this.ctx.strokeStyle = this.defaultStroke;
         this.ctx.beginPath();
 
         for (let i = 0; i < this.particles.length; i++) {
@@ -52,22 +52,19 @@ export default class TitleAnimation extends Animation {
         }
 
         this.ctx.stroke();
-        this.ctx.restore();
     }
 
     draw() {
         this.connectParticles();
 
-        const oldColor = this.ctx.fillStyle;
         this.ctx.beginPath();
         for (let particle of this.particles) {
             this.ctx.moveTo(particle.x, particle.y);
             this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         }
 
-        this.ctx.fillStyle = "#333";
+        this.ctx.fillStyle = this.defaultFill;
         this.ctx.fill();
-        this.ctx.fillStyle = oldColor;
     }
 
     /** @param {Particle} particle */

@@ -3,11 +3,8 @@ import Rectangle from "./primary/Rectangle.js";
 
 export default class RectangleAnimation extends Animation {
     constructor(canvas, rectangles) {
-        super();
-        /** @type {HTMLCanvasElement} */
-        this.canvas = canvas;
-        /** @type {CanvasRenderingContext2D} */
-        this.ctx = canvas.getContext("2d");
+        super(canvas);
+
         /** @type {Rectangle[]} */
         this.rectangles = rectangles;
     }
