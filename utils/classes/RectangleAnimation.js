@@ -15,7 +15,8 @@ export default class RectangleAnimation extends Animation {
 
     update() {
         for (let rectangle of this.rectangles) {
-            rectangle.x += 2;
+            rectangle.y += Math.sin(rectangle.x / 10) * 10;
+            rectangle.x += .1;
             if (rectangle.x > this.canvas.width) {
                 rectangle.x = -2.5 * rectangle.width;
             }
@@ -23,8 +24,8 @@ export default class RectangleAnimation extends Animation {
     }
 
     draw() {
-        this.ctx.save();
-        this.ctx.setTransform(1, Math.tan(45), 0, 1, 0, 0);
+        // this.ctx.save();
+        // this.ctx.setTransform(1, Math.tan(45), 0, 1, 0, 0);
 
         for (let rectangle of this.rectangles) {
             this.ctx.fillStyle = rectangle.color;
@@ -38,6 +39,6 @@ export default class RectangleAnimation extends Animation {
             );
         }
 
-        this.ctx.restore();
+        // this.ctx.restore();
     }
 }

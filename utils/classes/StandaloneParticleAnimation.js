@@ -61,7 +61,7 @@ export default class StandaloneParticleAnimetion extends Animation {
                 let dx = this.particleArray[i].x - this.particleArray[j].x;
                 let dy = this.particleArray[i].y - this.particleArray[j].y;
                 let distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance < 100) {
+                if (distance < 110) {
                     this.ctx.moveTo(
                         this.particleArray[i].x,
                         this.particleArray[i].y,

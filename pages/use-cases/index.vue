@@ -1,5 +1,5 @@
 <template>
-    <h1>Cas pratiques</h1>
+    <Header title="Use cases" />
 </template>
 
 <script setup>

@@ -1,5 +1,5 @@
 <template>
-    <BackgroundCanvas title="Notre expertise" />
+    <Header title="Expertise" />
 
     <h1>Notre expertise</h1>
 
@@ -60,6 +60,7 @@
 </template>
 
 <script>
+import { Header } from "#components";
 </script>
 
 <style scoped lang="scss">

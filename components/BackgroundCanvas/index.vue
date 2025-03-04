@@ -1,5 +1,5 @@
 <template>
-    <canvas ref="canvasRef" class="background-canvas" @click="show"></canvas>
+    <canvas ref="canvasRef" class="background-canvas"></canvas>
 </template>
 
 <script setup>
@@ -25,18 +25,15 @@ onMounted(() => {
     let particleArray = [];
 
     // Adjust the position of the text
-    const adjustX = 20;
+    const adjustX = 0;
     const adjustY = 0;
     const particleSpacing = 6;
 
-    $canvas.width = window.innerWidth;
-    $canvas.height = document.body.clientHeight;
-    $canvas.style.marginBottom = -$canvas.getBoundingClientRect().height + 450 +
-        "px";
-
     ctx.font = "30px Courier New";
-    ctx.fillText(props.title, 0, 30);
     ctx.textBaseline = "ideographic";
+    ctx.letterSpacing = "-1px";
+    ctx.wordSpacing = "-5px";
+    ctx.fillText(props.title, 0, 30);
     const textMeasure = ctx.measureText(props.title);
     const textCoordinates = ctx.getImageData(
         0,
@@ -44,17 +41,57 @@ onMounted(() => {
         textMeasure.width,
         textMeasure.fontBoundingBoxAscent,
     );
-
     const bgColor = getComputedStyle($canvas).getPropertyValue("background-color");
-    if (bgColor === "rgb(68, 68, 68)") {
-        ctx.strokeStyle = "rgba(249, 250, 253, 0.1)";
-        ctx.fillStyle = "rgba(249, 250, 253, 0.1)";
-    } else {
-        ctx.strokeStyle = "rgba(68, 68, 68, 0.05)";
-        ctx.fillStyle = "rgba(68, 68, 68, 0.05)";
+
+    function setStrokeAndFill(color) {
+        ctx.strokeStyle = color;
+        ctx.fillStyle = color;
     }
 
-    const init = () => {
+    function setCurrentColors(bgColor) {
+        if (bgColor === "rgb(68, 68, 68)") {
+            setStrokeAndFill("rgba(249, 250, 253, 0.1)");
+        } else {
+            setStrokeAndFill("rgba(68, 68, 68, 0.05)");
+        }
+    }
+
+    function animationInit() {
+        $canvas.width = document.body.clientWidth;
+        $canvas.height = document.body.clientHeight;
+        $canvas.style.marginBottom = -$canvas.getBoundingClientRect().height + 33 + 450 +
+            "px";
+        setCurrentColors(bgColor);
+        if (window.innerWidth > 1280) {
+            initParticles();
+            const animationManager = new AnimationManager(
+                $canvas,
+                [
+                    // new RectangleAnimation(
+                    //     $canvas,
+                    //     [
+                    //         new Rectangle(200, -200, 300, 120, "#5B3BD8"),
+                    //         new Rectangle(500, -350, 300, 120, "#FFDA05"),
+                    //         new Rectangle(800, -500, 300, 120, "#0D8060"),
+                    //     ],
+                    // ),
+                    new StandaloneParticleAnimetion($canvas, 200),
+                    new TitleAnimation($canvas, particleArray),
+                ],
+            );
+            animationManager.animate();
+        } else {
+            const animationManager = new AnimationManager(
+                $canvas,
+                [
+                    new StandaloneParticleAnimetion($canvas, 100),
+                ],
+            );
+            animationManager.animate();
+        }
+    }
+
+    const initParticles = () => {
         particleArray = [];
         const pixels_data = textCoordinates.data;
 
@@ -76,33 +113,11 @@ onMounted(() => {
         }
     };
 
-    if (window.innerWidth > 280) {
-        init();
-        const animationManager = new AnimationManager(
-            $canvas,
-            [
-                new RectangleAnimation(
-                    $canvas,
-                    [
-                        new Rectangle(200, -200, 300, 120, "#5B3BD8"),
-                        new Rectangle(500, -350, 300, 120, "#FFDA05"),
-                        new Rectangle(800, -500, 300, 120, "#0D8060"),
-                    ],
-                ),
-                new StandaloneParticleAnimetion($canvas, 300),
-                new TitleAnimation($canvas, particleArray),
-            ],
-        );
-        animationManager.animate();
-    } else {
-        const animationManager = new AnimationManager(
-            $canvas,
-            [
-                new StandaloneParticleAnimetion($canvas, 300),
-            ],
-        );
-        animationManager.animate();
-    }
+    window.onresize = () => {
+        animationInit();
+    };
+
+    animationInit();
 });
 </script>
 
