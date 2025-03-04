@@ -1,17 +1,26 @@
 <template>
-    <h1 v-if="isSmallScreen">{{ props.title }}</h1>
-    <BackgroundCanvas v-else :title="props.title" />
+    <div v-if="isSmallScreen">
+        <BackgroundCanvas title="" />
+        <h1>{{ props.title }}</h1>
+    </div>
+    <div v-else>
+        <BackgroundCanvas :title="props.title" />
+        <!-- problem notshown toujours affiché -->
+        <h1 class="not-shown">{{ props.title }}</h1>
+    </div>
 </template>
 
 <script setup>
 const props = defineProps({
     title: String,
+    subtitle: String,
 });
 
 let isSmallScreen = ref(false);
 
 onMounted(() => {
     isSmallScreen = window.innerWidth < 1280;
+    console.log(isSmallScreen);
 });
 </script>
 

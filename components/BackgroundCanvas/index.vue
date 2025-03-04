@@ -25,22 +25,44 @@ onMounted(() => {
     let particleArray = [];
 
     // Adjust the position of the text
-    const adjustX = 0;
-    const adjustY = 0;
-    const particleSpacing = 6;
+    function initTitle() {
+        const adjustX = 0;
+        const adjustY = 0;
+        const particleSpacing = 6;
 
-    ctx.font = "30px Courier New";
-    ctx.textBaseline = "ideographic";
-    ctx.letterSpacing = "-1px";
-    ctx.wordSpacing = "-5px";
-    ctx.fillText(props.title, 0, 30);
-    const textMeasure = ctx.measureText(props.title);
-    const textCoordinates = ctx.getImageData(
-        0,
-        0,
-        textMeasure.width,
-        textMeasure.fontBoundingBoxAscent,
-    );
+        ctx.font = "30px Courier New";
+        ctx.textBaseline = "ideographic";
+        ctx.letterSpacing = "-1px";
+        ctx.wordSpacing = "-5px";
+        ctx.fillText(props.title, 0, 30);
+        const textMeasure = ctx.measureText(props.title);
+        const textCoordinates = ctx.getImageData(
+            0,
+            0,
+            textMeasure.width,
+            textMeasure.fontBoundingBoxAscent,
+        );
+
+        particleArray = [];
+        const pixels_data = textCoordinates.data;
+
+        for (let y = 0; y < textCoordinates.height; y++) {
+            for (let x = 0; x < textCoordinates.width; x++) {
+                const index = (y * textCoordinates.width + x) * 4;
+                const a = pixels_data[index + 3];
+                if (a > 0) {
+                    let positionX = x + adjustX;
+                    let positionY = y + adjustY;
+                    particleArray.push(
+                        new Particle(
+                            positionX * particleSpacing,
+                            positionY * particleSpacing,
+                        ),
+                    );
+                }
+            }
+        }
+    }
     const bgColor = getComputedStyle($canvas).getPropertyValue("background-color");
 
     function setStrokeAndFill(color) {
@@ -62,8 +84,9 @@ onMounted(() => {
         $canvas.style.marginBottom = -$canvas.getBoundingClientRect().height + 33 + 450 +
             "px";
         setCurrentColors(bgColor);
+
         if (window.innerWidth > 1280) {
-            initParticles();
+            initTitle();
             const animationManager = new AnimationManager(
                 $canvas,
                 [
@@ -75,7 +98,7 @@ onMounted(() => {
                     //         new Rectangle(800, -500, 300, 120, "#0D8060"),
                     //     ],
                     // ),
-                    new StandaloneParticleAnimetion($canvas, 200),
+                    // new StandaloneParticleAnimetion($canvas, 200),
                     new TitleAnimation($canvas, particleArray),
                 ],
             );
@@ -92,25 +115,6 @@ onMounted(() => {
     }
 
     const initParticles = () => {
-        particleArray = [];
-        const pixels_data = textCoordinates.data;
-
-        for (let y = 0; y < textCoordinates.height; y++) {
-            for (let x = 0; x < textCoordinates.width; x++) {
-                const index = (y * textCoordinates.width + x) * 4;
-                const a = pixels_data[index + 3];
-                if (a > 0) {
-                    let positionX = x + adjustX;
-                    let positionY = y + adjustY;
-                    particleArray.push(
-                        new Particle(
-                            positionX * particleSpacing,
-                            positionY * particleSpacing,
-                        ),
-                    );
-                }
-            }
-        }
     };
 
     window.onresize = () => {

@@ -20,8 +20,8 @@
                 :dropDownEntries='
                     [
                         { url: "/", title: "Accueil" },
-                        { url: "/about", title: "Expertise" },
-                        { url: "/use-cases", title: "Cas pratiques" },
+                        { url: "/expertise", title: "Expertise" },
+                        { url: "/websites", title: "Websites" },
                         { url: "/contact", title: "Contact" },
                     ]
                 '
@@ -30,10 +30,10 @@
             <ul class="navbar--large navbar-items">
                 <li class="navbar-item"><NuxtLink to="/">Accueil</NuxtLink></li>
                 <li class="navbar-item">
-                    <NuxtLink to="/about">A propos</NuxtLink>
+                    <NuxtLink to="/expertise">Expertise</NuxtLink>
                 </li>
                 <li class="navbar-item">
-                    <NuxtLink to="/use-cases">Cas pratiques</NuxtLink>
+                    <NuxtLink to="/websites">Websites</NuxtLink>
                 </li>
                 <li class="navbar-item">
                     <NuxtLink to="/contact">Contact</NuxtLink>

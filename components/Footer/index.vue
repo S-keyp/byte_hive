@@ -3,9 +3,9 @@
         <Container>
             <ul>
                 <li><NuxtLink to="/">Accueil</NuxtLink></li>
-                <li><NuxtLink to="/about">A propos</NuxtLink></li>
+                <li><NuxtLink to="/expertise">A propos</NuxtLink></li>
                 <li><NuxtLink to="/contact">Contact</NuxtLink></li>
-                <li><NuxtLink to="/use-cases">Cas pratiques</NuxtLink></li>
+                <li><NuxtLink to="/websites">Cas pratiques</NuxtLink></li>
             </ul>
         </Container>
     </footer>
