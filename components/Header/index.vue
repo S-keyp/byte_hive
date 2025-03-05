@@ -5,7 +5,6 @@
     </div>
     <div v-else>
         <BackgroundCanvas :title="props.title" />
-        <!-- problem notshown toujours affiché -->
         <h1 class="not-shown">{{ props.title }}</h1>
     </div>
 </template>
@@ -19,7 +18,7 @@ const props = defineProps({
 let isSmallScreen = ref(false);
 
 onMounted(() => {
-    isSmallScreen = window.innerWidth < 1280;
+    isSmallScreen.value = window.innerWidth < 1280;
     console.log(isSmallScreen);
 });
 </script>
