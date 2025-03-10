@@ -4,16 +4,13 @@
         <Container>
             <div>
                 <h2>
-                    Un site sur mesure que VOUS pouvez modifier simplement
+                    2 spécialités
                 </h2>
 
                 <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur dicta ratione
-                    nulla hic doloremque minima, at quibusdam tempore aspernatur nemo itaque quaerat
-                    incidunt maxime corporis illum accusamus distinctio ea fugit autem possimus
-                    voluptates! Voluptatem accusamus debitis hic? Facere aperiam accusamus, sit
-                    aliquid vero saepe modi sapiente quisquam in laboriosam voluptate officiis
-                    dolores.
+                    - Développement de site web sur mesure que vous pouvez modifier simplement -
+                    Prestations de développements ciblés en fonction de vos besoins en Python,
+                    Django, Vue.js, Nuxt, HTML, CSS (principalement)
                 </p>
             </div>
         </Container>

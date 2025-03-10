@@ -3,3 +3,35 @@
 .not-shown {
     display: none;
 }
+
+header {
+    position: relative;
+    z-index: -1;
+}
+
+.header-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 340px;
+    height: 340px;
+    margin: 24px 5%;
+    padding: 29px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: center;
+    font-size: 28px;
+    background-color: #222;
+    border-radius: 50%;
+    border: 1px solid var(--white);
+    border-style: dotted dashed solid groove;
+}
+
+.header-content h1::first-letter {
+    font-size: 70px;
+}
+
+.header-content-subtitle {
+    font-size: 0.9em;
+}

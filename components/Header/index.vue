@@ -1,12 +1,20 @@
 <template>
-    <div v-if="isSmallScreen">
+    <header v-if="isSmallScreen">
         <BackgroundCanvas title="" />
-        <h1>{{ props.title }}</h1>
-    </div>
-    <div v-else>
+        <div class="header-content">
+            <h1>{{ props.title }}</h1>
+            <h2 class="header-content-subtitle">Entreprise de développement informatique</h2>
+        </div>
+    </header>
+    <header v-else>
         <BackgroundCanvas :title="props.title" />
-        <h1 class="not-shown">{{ props.title }}</h1>
-    </div>
+        <div class="header-content">
+            <h1 class="not-shown">{{ props.title }}</h1>
+            <h2 class="not-shown header-content-subtitle">
+                Entreprise de développement informatique
+            </h2>
+        </div>
+    </header>
 </template>
 
 <script setup>
@@ -19,7 +27,6 @@ let isSmallScreen = ref(false);
 
 onMounted(() => {
     isSmallScreen.value = window.innerWidth < 1280;
-    console.log(isSmallScreen);
 });
 </script>
 

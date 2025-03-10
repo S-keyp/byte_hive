@@ -78,6 +78,10 @@ onMounted(() => {
         }
     }
 
+    $canvas.width = document.body.clientWidth;
+    $canvas.height = document.body.clientHeight;
+    $canvas.style.marginBottom = -$canvas.getBoundingClientRect().height + 33 + 450 +
+        "px";
     function animationInit() {
         $canvas.width = document.body.clientWidth;
         $canvas.height = document.body.clientHeight;
@@ -114,12 +118,9 @@ onMounted(() => {
         }
     }
 
-    const initParticles = () => {
-    };
-
-    window.onresize = () => {
-        animationInit();
-    };
+    // window.onresize = () => {
+    //     animationInit();
+    // };
 
     animationInit();
 });
