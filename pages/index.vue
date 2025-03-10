@@ -2,7 +2,7 @@
     <Main>
         <Header title="Byte Hive" />
         <Container>
-            <div>
+            <div class="container-content">
                 <h2>
                     2 spécialités
                 </h2>
@@ -15,7 +15,7 @@
             </div>
         </Container>
         <Container>
-            <div>
+            <div class="container-content">
                 <h2>Un accompagnement personnalisé à toutes les étapes de votre projet</h2>
 
                 <p>
@@ -28,7 +28,7 @@
             </div>
         </Container>
         <Container>
-            <div>
+            <div class="container-content">
                 <h2>Pourquoi choisir Byte Hive ?</h2>
 
                 <p>

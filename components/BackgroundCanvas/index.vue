@@ -78,10 +78,10 @@ onMounted(() => {
         }
     }
 
-    $canvas.width = document.body.clientWidth;
-    $canvas.height = document.body.clientHeight;
-    $canvas.style.marginBottom = -$canvas.getBoundingClientRect().height + 33 + 450 +
-        "px";
+    // $canvas.width = document.body.clientWidth;
+    // $canvas.height = document.body.clientHeight;
+    // $canvas.style.marginBottom = -$canvas.getBoundingClientRect().height + 33 + 450 +
+    //     "px";
     function animationInit() {
         $canvas.width = document.body.clientWidth;
         $canvas.height = document.body.clientHeight;
@@ -102,7 +102,7 @@ onMounted(() => {
                     //         new Rectangle(800, -500, 300, 120, "#0D8060"),
                     //     ],
                     // ),
-                    // new StandaloneParticleAnimetion($canvas, 200),
+                    new StandaloneParticleAnimetion($canvas, 200),
                     new TitleAnimation($canvas, particleArray),
                 ],
             );
@@ -118,9 +118,9 @@ onMounted(() => {
         }
     }
 
-    // window.onresize = () => {
-    //     animationInit();
-    // };
+    window.onresize = () => {
+        animationInit();
+    };
 
     animationInit();
 });

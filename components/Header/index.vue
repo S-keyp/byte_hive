@@ -8,8 +8,8 @@
     </header>
     <header v-else>
         <BackgroundCanvas :title="props.title" />
-        <div class="header-content">
-            <h1 class="not-shown">{{ props.title }}</h1>
+        <div class="header-content not-shown">
+            <h1 class="">{{ props.title }}</h1>
             <h2 class="not-shown header-content-subtitle">
                 Entreprise de développement informatique
             </h2>

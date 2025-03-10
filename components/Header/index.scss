@@ -1,12 +1,7 @@
 @use "~/assets/scss/colors" as *;
-
-.not-shown {
-    display: none;
-}
-
 header {
     position: relative;
-    z-index: -1;
+    z-index: 0;
 }
 
 .header-content {
@@ -25,13 +20,27 @@ header {
     background-color: #222;
     border-radius: 50%;
     border: 1px solid var(--white);
-    border-style: dotted dashed solid groove;
+    border-style: dotted dashed solid;
 }
 
 .header-content h1::first-letter {
-    font-size: 70px;
+    font-size: 1.25em;
 }
 
 .header-content-subtitle {
     font-size: 0.9em;
+}
+
+@media print, screen and (min-width: 750px) {
+    .header-content {
+        width: 450px;
+        height: 450px;
+        margin: 36px 10%;
+        border-width: 3px;
+        font-size: 32px;
+    }
+}
+
+.not-shown {
+    display: none;
 }
