@@ -3,13 +3,63 @@ li {
 }
 
 footer {
+    position: relative;
     background-color: #333;
     color: #f9fafd;
 }
 
 footer > ::v-deep(.container) {
     width: 100%;
-    min-height: 240px;
+    min-height: 400px;
     padding: 0;
-    // background-color: var(--black);
+}
+
+footer > ::v-deep(.container) .footer-items {
+    width: 80%;
+    margin: 36px auto 0;
+    padding: 48px 24px;
+}
+
+footer > ::v-deep(.container) .footer-item {
+    position: relative;
+    display: block;
+    width: 160px;
+    margin: 6px 0;
+}
+
+footer > ::v-deep(.container) .footer-item::before {
+    content: url("/icons/list-icon.svg");
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 12px;
+}
+
+footer > ::v-deep(.container) .footer-item::after {
+    content: "";
+    top: 60%;
+    left: 12px;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #f9fafd;
+    margin: 12px 0;
+}
+
+footer > ::v-deep(.container) .footer-item a {
+    display: inline-block;
+    width: calc(100% - 36px);
+    padding: 6px 0;
+    font-weight: 600;
+}
+
+@media print, screen and (min-width: 800px) {
+    footer > ::v-deep(.container) .footer-items {
+        width: 70%;
+    }
+
+    footer > ::v-deep(.container) .footer-item a {
+        padding: 12px 0;
+    }
 }
