@@ -6,7 +6,6 @@
                 <li class="footer-item"><NuxtLink to="/expertise">A propos</NuxtLink></li>
                 <li class="footer-item"><NuxtLink to="/contact">Contact</NuxtLink></li>
                 <li class="footer-item"><NuxtLink to="/websites">Cas pratiques</NuxtLink></li>
-                <li class="footer-item"><a href="#">Back to top</a></li>
             </ul>
         </Container>
     </footer>

@@ -52,14 +52,40 @@ async function handleSubmit(event) {
             "Oops! Il y a eu un problème en envoyant ton mail, réessaye plus tard .!";
     });
 }
-
-// TODO: créer un formulaire de contact dans une boite de dialogue ie: modal
 </script>
 
 <template>
-    <Header title="Contact" />
+    <Container>
+        <div class="contact-form">
+            <h2 class="section__subtitle">Contactez-nous</h2>
 
-    <ContactForm />
+            <form @submit="checkForm" id="my-form-status" method="POST" ref="form">
+                <label>
+                    <span>Prénom:</span>
+                    <input type="text" name="prenom" minlength="2" pattern="[A-Za-z]+" required>
+                </label>
+                <label>
+                    <span>Email:</span>
+                    <input type="email" name="email" required>
+                </label>
+                <label>
+                    <span>Téléphone:</span>
+                    <input type="phone" name="tel" pattern="[0-9]{10}" required>
+                </label>
+                <label>
+                    Message:
+                    <textarea
+                        class="contact-form-textarea"
+                        name="message"
+                        minlength="10"
+                        cols="50"
+                        rows="10"
+                    ></textarea>
+                </label>
+                <button class="contact-form-button" type="submit">Envoyer</button>
+            </form>
+        </div>
+    </Container>
 </template>
 
 <style scoped lang="scss">

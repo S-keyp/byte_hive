@@ -2,6 +2,7 @@
     <div>
         <NuxtRouteAnnouncer />
         <Navigation />
+        <ActionButton />
         <NuxtPage />
         <Footer />
     </div>

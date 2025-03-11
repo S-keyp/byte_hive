@@ -118,11 +118,11 @@ onMounted(() => {
         }
     }
 
-    window.onresize = () => {
-        animationInit();
-    };
+    // window.onresize = () => {
+    //     animationInit();
+    // };
 
-    animationInit();
+    // animationInit();
 });
 </script>
 
