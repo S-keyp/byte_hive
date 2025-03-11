@@ -26,6 +26,10 @@ export default defineNuxtConfig({
     //     host: "0.0.0.0",
     // },
 
+    runtimeConfig: {
+        formSpreeUrl: process.env.VITE_FORM_SPREE_URL,
+    },
+
     vite: {
         css: {
             preprocessorOptions: {

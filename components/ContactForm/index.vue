@@ -1,7 +1,6 @@
 <script setup>
 const config = useRuntimeConfig();
-console.log("config", config);
-// const formSpreeUrl = config.public.formSpreeUrl;
+const formSpreeUrl = config.formSpreeUrl;
 
 let email = null;
 let message = null;
@@ -31,7 +30,7 @@ async function handleSubmit(event) {
     let status = document.getElementById("my-form-status");
     let data = new FormData(event.target);
 
-    fetch("https://formspree.io/f/movjyaqp", { //formSpreeUrl, {
+    fetch(formSpreeUrl, {
         method: "POST",
         body: data,
         headers: {
