@@ -81,7 +81,26 @@ async function handleSubmit(event) {
                         rows="10"
                     ></textarea>
                 </label>
-                <button class="contact-form-button" type="submit">Envoyer</button>
+                <button class="contact-form-button" type="submit">
+                    Envoyer
+                    <svg
+                        width="27"
+                        height="27"
+                        viewBox="0 0 27 27"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <line
+                            x1="1.29289"
+                            y1="25.9809"
+                            x2="26.1037"
+                            y2="1.17009"
+                            stroke-width="2"
+                        />
+                        <line x1="9.45618" y1="0.877197" x2="27" y2="0.877197" stroke-width="2" />
+                        <line x1="26" y1="18.5439" x2="26" y2="0.999994" stroke-width="2" />
+                    </svg>
+                </button>
             </form>
         </div>
     </Container>

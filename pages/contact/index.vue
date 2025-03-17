@@ -52,8 +52,6 @@ async function handleSubmit(event) {
             "Oops! Il y a eu un problème en envoyant ton mail, réessaye plus tard .!";
     });
 }
-
-// TODO: créer un formulaire de contact dans une boite de dialogue ie: modal
 </script>
 
 <template>

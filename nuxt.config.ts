@@ -3,6 +3,7 @@ export default defineNuxtConfig({
     compatibilityDate: "2024-04-03",
     devtools: { enabled: true },
     sourcemap: true,
+
     app: {
         head: {
             "meta": [
@@ -21,10 +22,11 @@ export default defineNuxtConfig({
         },
         // pageTransition: { name: 'page', mode: 'out-in' }
     },
+
     // allow connection from device on same wifi
-    // devServer: {
-    //     host: "0.0.0.0",
-    // },
+    devServer: {
+        host: "0.0.0.0",
+    },
 
     runtimeConfig: {
         formSpreeUrl: process.env.VITE_FORM_SPREE_URL,

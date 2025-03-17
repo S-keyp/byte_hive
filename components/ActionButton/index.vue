@@ -1,7 +1,7 @@
 <template>
     <div class="action-container">
         <svg
-            class="action-container-main-icon"
+            class="action-container-main"
             width="20"
             height="6"
             viewBox="0 0 20 6"
@@ -29,7 +29,9 @@
                 </linearGradient>
             </defs>
         </svg>
-        <a href="#"><svg
+        <a href="#">
+            <svg
+                class="action-up-arrow"
                 width="16"
                 height="17"
                 viewBox="0 0 16 17"
@@ -44,6 +46,7 @@
         </a>
 
         <svg
+            class="action-mail"
             width="800px"
             height="800px"
             viewBox="0 0 24 24"
@@ -82,7 +85,7 @@
         <dialog id="contactModal">
             <form method="dialog">
                 <ContactForm />
-                <button value="oink oink">Fermer</button>
+                <button class="close-modal">X</button>
             </form>
         </dialog>
         <!-- <div class="actions">

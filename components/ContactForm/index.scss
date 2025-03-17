@@ -42,8 +42,7 @@ label input {
     border-bottom: 1px solid #ccc;
 }
 
-.contact-form-button::after {
-    display: inline-block;
-    content: url("/public/icons/send-arrow.svg");
-    margin-left: 10px;
+.contact-form-button svg {
+    margin-left: 7px;
+    stroke: #f9fafd;
 }
