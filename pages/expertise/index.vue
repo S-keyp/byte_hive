@@ -1,5 +1,5 @@
 <template>
-    <Header title="Expertise" />
+    <Header subTitle="Des solutions digitales sur-mesure et performantes" />
 
     <Container>
         <div>

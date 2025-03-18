@@ -1,5 +1,5 @@
 <template>
-    <Header title="Websites" />
+    <Header subTitle="Un site abordable, rapide et modifiable" />
 
     <Container>
         <div>

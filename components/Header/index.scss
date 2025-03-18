@@ -1,4 +1,5 @@
 @use "~/assets/scss/colors" as *;
+
 header {
     position: relative;
     z-index: 0;
@@ -37,6 +38,25 @@ header {
         margin: 36px 10%;
         border-width: 3px;
         font-size: 32px;
+    }
+}
+
+@media print, screen and (min-width: 1280px) {
+    .header-content {
+        width: 80%;
+        z-index: 0;
+        margin: 240px 10% 48px;
+        display: unset;
+        background: unset;
+        border: unset;
+    }
+
+    .header-content-subtitle {
+        font-size: 2em;
+        user-select: none;
+        width: fit-content;
+        max-width: 1000px;
+        border-bottom: 2px solid var(--white);
     }
 }
 

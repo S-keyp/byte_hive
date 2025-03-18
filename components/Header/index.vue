@@ -2,16 +2,16 @@
     <header v-if="isSmallScreen">
         <BackgroundCanvas title="" />
         <div class="header-content">
-            <h1>{{ props.title }}</h1>
-            <h2 class="header-content-subtitle">Entreprise de développement informatique</h2>
+            <h1>Byte Hive</h1>
+            <h2 class="header-content-subtitle">{{ props.subTitle }}</h2>
         </div>
     </header>
     <header v-else>
-        <BackgroundCanvas :title="props.title" />
-        <div class="header-content not-shown">
-            <h1 class="">{{ props.title }}</h1>
-            <h2 class="not-shown header-content-subtitle">
-                Entreprise de développement informatique
+        <BackgroundCanvas title="Byte Hive" />
+        <div class="header-content">
+            <h1 class="not-shown">Byte Hive</h1>
+            <h2 class="header-content-subtitle">
+                {{ props.subTitle }}
             </h2>
         </div>
     </header>
@@ -19,8 +19,7 @@
 
 <script setup>
 const props = defineProps({
-    title: String,
-    subtitle: String,
+    subTitle: String,
 });
 
 let isSmallScreen = ref(false);

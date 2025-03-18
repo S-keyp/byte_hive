@@ -3,6 +3,7 @@ import Animation from "./abstract/Animation.js";
 
 export default class TitleAnimation extends Animation {
     isClicked = false;
+    events = [];
 
     /**
      * @param {HTMLCanvasElement} canvas
@@ -18,9 +19,10 @@ export default class TitleAnimation extends Animation {
         this.particles = particles;
         this.mouse = { x: null, y: null, radius: 100 };
 
-        this.canvas.addEventListener("mousemove", (event) => {
+        document.addEventListener("mousemove", (event) => {
             this.mouse.x = event.x;
             this.mouse.y = event.y - this.canvas.getBoundingClientRect().top;
+            this.mouse.from = "canvas";
         });
 
         this.canvas.addEventListener("mousedown", () => {
@@ -44,7 +46,7 @@ export default class TitleAnimation extends Animation {
                 let dy = this.particles[i].y - this.particles[j].y;
                 let distance = Math.sqrt(dx * dx + dy * dy);
 
-                if (distance < 15 && distance > 7) {
+                if (distance < 13.5 && distance > 7) {
                     this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
                     this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
                 }

@@ -4,7 +4,8 @@ import Particle from "./primary/Particle.js";
 export default class StandaloneParticleAnimetion extends Animation {
     constructor(canvas, amountOfPartciles) {
         super(canvas);
-
+        this.defaultFill = "rgba(249, 250, 253, 0.1)";
+        this.defaultStroke = "rgba(249, 250, 253, 0.1)";
         this.particleArray = [];
         for (let i = 0; i < amountOfPartciles; i++) {
             this.particleArray.push(

@@ -26,21 +26,21 @@ onMounted(() => {
 
     // Adjust the position of the text
     function initTitle() {
-        const adjustX = 0;
-        const adjustY = 0;
+        const adjustX = 24;
+        const adjustY = 7;
         const particleSpacing = 6;
 
         ctx.font = "30px Courier New";
         ctx.textBaseline = "ideographic";
         ctx.letterSpacing = "-1px";
-        ctx.wordSpacing = "-5px";
+        ctx.wordSpacing = "-8px";
         ctx.fillText(props.title, 0, 30);
         const textMeasure = ctx.measureText(props.title);
         const textCoordinates = ctx.getImageData(
             0,
             0,
             textMeasure.width,
-            textMeasure.fontBoundingBoxAscent,
+            textMeasure.fontBoundingBoxAscent + 3,
         );
 
         particleArray = [];
@@ -63,6 +63,7 @@ onMounted(() => {
             }
         }
     }
+
     const bgColor = getComputedStyle($canvas).getPropertyValue("background-color");
 
     function setStrokeAndFill(color) {
@@ -72,9 +73,9 @@ onMounted(() => {
 
     function setCurrentColors(bgColor) {
         if (bgColor === "rgb(68, 68, 68)") {
-            setStrokeAndFill("rgba(249, 250, 253, 0.1)");
+            setStrokeAndFill("rgba(249, 250, 253, 0.6)");
         } else {
-            setStrokeAndFill("rgba(68, 68, 68, 0.05)");
+            setStrokeAndFill("rgba(68, 68, 68, 0.15)");
         }
     }
 
@@ -82,6 +83,7 @@ onMounted(() => {
     // $canvas.height = document.body.clientHeight;
     // $canvas.style.marginBottom = -$canvas.getBoundingClientRect().height + 33 + 450 +
     //     "px";
+
     function animationInit() {
         $canvas.width = document.body.clientWidth;
         $canvas.height = document.body.clientHeight;
@@ -102,7 +104,7 @@ onMounted(() => {
                     //         new Rectangle(800, -500, 300, 120, "#0D8060"),
                     //     ],
                     // ),
-                    new StandaloneParticleAnimetion($canvas, 200),
+                    // new StandaloneParticleAnimetion($canvas, 200),
                     new TitleAnimation($canvas, particleArray),
                 ],
             );

@@ -1,6 +1,6 @@
 <template>
     <Main>
-        <Header title="Byte Hive" />
+        <Header subTitle="Entreprise de développement informatique" />
         <Container>
             <div class="container-content">
                 <h2>

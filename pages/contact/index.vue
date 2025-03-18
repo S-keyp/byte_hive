@@ -55,7 +55,7 @@ async function handleSubmit(event) {
 </script>
 
 <template>
-    <Header title="Contact" />
+    <Header subTitle="Contact" />
 
     <ContactForm />
 </template>
