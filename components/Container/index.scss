@@ -59,8 +59,15 @@
 
 .flex-container {
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
     align-items: baseline;
+}
+
+@media print, screen and (min-width: 768px) {
+    .flex-container {
+        flex-direction: row;
+    }
 }
 
 @media (prefers-color-scheme: dark) {

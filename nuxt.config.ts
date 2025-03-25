@@ -29,7 +29,9 @@ export default defineNuxtConfig({
     },
 
     runtimeConfig: {
-        formSpreeUrl: process.env.VITE_FORM_SPREE_URL,
+        public: {
+            formSpreeUrl: process.env.VITE_FORM_SPREE_URL,
+        },
     },
 
     vite: {

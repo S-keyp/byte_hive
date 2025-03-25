@@ -1,6 +1,6 @@
 <script setup>
 const config = useRuntimeConfig();
-const formSpreeUrl = config.formSpreeUrl;
+const formSpreeUrl = config.public.formSpreeUrl;
 
 let email = null;
 let message = null;

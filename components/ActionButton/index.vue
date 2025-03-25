@@ -1,3 +1,7 @@
+<script setup>
+// import { ContactForm } from "#components";
+</script>
+
 <template>
     <div class="action-container">
         <svg
@@ -84,18 +88,16 @@
 
         <dialog id="contactModal">
             <form method="dialog">
-                <ContactForm />
                 <button class="close-modal">X</button>
             </form>
+
+            <ContactForm />
         </dialog>
+
         <!-- <div class="actions">
         </div> -->
     </div>
 </template>
-
-<script>
-import { ContactForm } from "#components";
-</script>
 
 <style lang="scss">
 @use "./index.scss";
