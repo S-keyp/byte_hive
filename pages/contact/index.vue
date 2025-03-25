@@ -55,9 +55,32 @@ async function handleSubmit(event) {
 </script>
 
 <template>
-    <Header subTitle="Contact" />
+    <Header subTitle="Contactez-nous 📩" />
 
-    <ContactForm />
+    <Container>
+        <div class="container-content">
+            <h2>Vous avez un projet en tête ou une question ? On est à votre écoute !</h2>
+            <div class="flex-container">
+                <div class="container-content-infos">
+                    <h3>📌 Informations</h3>
+                    <ul>
+                        <li>📍 Adresse : 123 Avenue du Code, 75000 Paris</li>
+                        <li>📞 Téléphone : 01 23 45 67 89</li>
+                        <li>📧 Email : contact@bytehive.dev</li>
+                    </ul>
+
+                    <h3>🕒 Horaires d'ouverture :</h3>
+                    <ul>
+                        <li>🗓 Lundi - Vendredi</li>
+                        <li>⏰ Matin : 9h - 12h</li>
+                        <li>⏰ Après-midi : 14h - 18h</li>
+                    </ul>
+                </div>
+
+                <ContactForm />
+            </div>
+        </div>
+    </Container>
 </template>
 
 <style scoped lang="scss">

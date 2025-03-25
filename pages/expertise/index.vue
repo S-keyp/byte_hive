@@ -2,7 +2,7 @@
     <Header subTitle="Des solutions digitales sur-mesure et performantes" />
 
     <Container>
-        <div>
+        <div class="container-content">
             <h2>
                 🚀 Développement Sur-Mesure, Performant et Scalable
             </h2>
@@ -16,7 +16,7 @@
     </Container>
 
     <Container>
-        <div>
+        <div class="container-content">
             <h2>
                 ⚡ Expertise Full-Stack : Front & Back, Tout est Maîtrisé
             </h2>
@@ -30,7 +30,7 @@
     </Container>
 
     <Container>
-        <div>
+        <div class="container-content">
             <h2>
                 🎯 Des Solutions Clés en Main, Taillées pour Votre Business
             </h2>

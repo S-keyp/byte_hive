@@ -21,6 +21,7 @@ header {
     border-radius: 50%;
     border: 1px solid var(--white);
     border-style: dotted dashed solid;
+    color: $white;
 }
 
 .header-content h1::first-letter {
@@ -56,7 +57,14 @@ header {
         user-select: none;
         width: fit-content;
         max-width: 1000px;
-        border-bottom: 2px solid var(--white);
+        border-bottom: 2px solid $white;
+    }
+
+    @media (prefers-color-scheme: light) {
+        .header-content-subtitle {
+            color: $black;
+            border-bottom-color: $black;
+        }
     }
 }
 

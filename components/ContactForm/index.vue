@@ -56,7 +56,8 @@ async function handleSubmit(event) {
 <template>
     <Container>
         <div class="contact-form">
-            <h2 class="section__subtitle">Contactez-nous</h2>
+            <h2 class="section__subtitle">💬 Besoin d'un devis ou d'un conseil ?</h2>
+            <p>N'hésitez pas à nous écrire, on vous répond dans les plus brefs délais !</p>
 
             <form @submit="checkForm" id="my-form-status" method="POST" ref="form">
                 <label>

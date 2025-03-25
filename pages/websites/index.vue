@@ -2,7 +2,7 @@
     <Header subTitle="Un site abordable, rapide et modifiable" />
 
     <Container>
-        <div>
+        <div class="container-content">
             <h2>
                 🚀 Une Stack Moderne et Performante
             </h2>
@@ -16,7 +16,7 @@
     </Container>
 
     <Container>
-        <div>
+        <div class="container-content">
             <h2>
                 ✨ Gérez Votre Contenu en Toute Simplicité
             </h2>
@@ -30,7 +30,7 @@
     </Container>
 
     <Container>
-        <div>
+        <div class="container-content">
             <h2>
                 🔥 Autonomie et Flexibilité Totale
             </h2>
@@ -43,7 +43,7 @@
     </Container>
 
     <Container>
-        <div>
+        <div class="container-content">
             <h2>
                 ⚡ Un Site Toujours Rapide et Optimisé
             </h2>

@@ -6,22 +6,84 @@
 }
 
 .container > div {
+    position: relative;
     width: 80%;
     max-width: 1280px;
     margin: auto;
     padding: 24px;
-    background: rgba(248, 250, 253, 0.7);
     border-radius: 6px;
+}
+
+.container > div::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 50%;
+    border: 2px solid #eee;
+    background-color: var(--white);
 }
 
 .container-content {
     font-size: 18px;
 
-    h2 {
-        margin-bottom: 12px;
+    ul {
+        list-style: none;
     }
 
+    li {
+        display: inline-block;
+        margin-bottom: 12px;
+
+        span {
+            font-weight: 700;
+            text-decoration: underline;
+            margin-bottom: 6px;
+        }
+    }
+
+    li::before {
+        content: url("/public/icons/double-arrow-icon.png");
+        line-height: 1.6em;
+        margin-right: 6px;
+    }
+
+    ul,
     p {
-        font-size: 0.85em;
+        font-size: 0.9em;
+        margin-top: 24px;
+    }
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+}
+
+@media (prefers-color-scheme: dark) {
+    .container {
+        color: var(--black);
+    }
+
+    .container > div {
+        background: rgba(248, 250, 253, 0.7);
+        border: 3px solid #aaa;
+        border-radius: 12px;
+    }
+
+    .container > div::before {
+        box-shadow: inset 2px -3px 7px 1px #aaa;
+        border: 1px solid #aaa;
+        background-color: inherit;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .container > div {
+        background: rgba(242, 242, 242, 0.5);
+        border: 3px solid #eee;
     }
 }
